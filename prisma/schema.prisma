@@ -1,0 +1,95 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Restaurant {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String
+  description String
+  avatarImage String
+  coverImage  String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  MenuCategory MenuCategory[]
+  Product      Product[]
+  Order        Order[]
+}
+
+model MenuCategory {
+  id           String   @id @default(cuid())
+  name         String
+  restaurantID String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  restaurant Restaurant @relation(fields: [restaurantID], references: [id])
+  Product    Product[]
+}
+
+model Product {
+  id             String   @id @default(cuid())
+  name           String
+  description    String
+  price          Float
+  image          String
+  ingredients    String[]
+  restaurantID   String
+  menuCategoryID String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  restaurant   Restaurant     @relation(fields: [restaurantID], references: [id])
+  menuCategory MenuCategory   @relation(fields: [menuCategoryID], references: [id])
+  OrderProduct OrderProduct[]
+}
+
+model Order {
+  id                String            @id @default(cuid())
+  orderNumber       Int               @default(autoincrement())
+  total             Float
+  status            OrderStatus
+  consumptionMethod ConsumptionMethod
+  OrderProduct      OrderProduct[]
+  restaurantID      String
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+
+  restaurant Restaurant @relation(fields: [restaurantID], references: [id])
+}
+
+model OrderProduct {
+  id        String   @id @default(cuid())
+  productID String
+  orderID   String
+  quantity  Int
+  price     Float
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  product Product @relation(fields: [productID], references: [id])
+  order   Order   @relation(fields: [orderID], references: [id])
+}
+
+enum OrderStatus {
+  PENDING
+  IN_PREPERATION
+  FINISHED
+}
+
+enum ConsumptionMethod {
+  TAKEAWAY
+  DINE_IN
+}
