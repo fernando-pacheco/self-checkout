@@ -1,15 +1,32 @@
+import { type VariantProps, cva } from "class-variance-authority"
 import type { ComponentProps } from "react"
 import { twMerge } from "tailwind-merge"
 
-interface ButtonProps extends ComponentProps<"button"> {}
+interface ButtonProps extends ComponentProps<"button"> {
+    variant: "default" | "secondary" | "ghost" | "disabled" | null | undefined
+}
 
-function Button({ className, ...props }: ButtonProps) {
+const buttonVariants = cva(
+    "rounded-lg p-2 cursor-pointer transition-colors duration-150 hover:bg-gray-200 hover:text-white",
+    {
+        variants: {
+            variant: {
+                default: "bg-gray-100",
+                secondary: "bg-yellow text-white ",
+                ghost: "",
+                disabled: "",
+            },
+        },
+        defaultVariants: {
+            variant: "default",
+        },
+    }
+)
+
+function Button({ className, variant, ...props }: ButtonProps) {
     return (
         <button
-            className={twMerge(
-                "rounded-lg bg-gray-100 p-2 cursor-pointer hover:bg-gray-200 hover:text-white transition-colors duration-150",
-                className
-            )}
+            className={twMerge(buttonVariants({ variant }), className)}
             {...props}
         />
     )
