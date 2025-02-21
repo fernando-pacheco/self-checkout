@@ -41,11 +41,15 @@ async function RestaurantPage({ params }: RestaurantPageProps) {
                     buttonText="Para comer aqui"
                     imageAlt="Para comer aqui"
                     imageUrl="/dine_in.png"
+                    option="DINE_IN"
+                    slug={slug}
                 />
                 <ConsumptionMethodOpt
                     buttonText="Para levar"
                     imageAlt="Para levar"
                     imageUrl="/takeaway.png"
+                    option="TAKEAWAY"
+                    slug={slug}
                 />
             </div>
         </div>
