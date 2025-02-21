@@ -1,5 +1,6 @@
 import { getRestaurantBySlug } from "@/services/restaurant"
 import { notFound } from "next/navigation"
+import { RestaurantCategories } from "./components/categories"
 import { RestaurantHeader } from "./components/header"
 
 interface RestaurantMenuPageProps {
@@ -26,6 +27,7 @@ async function RestaurantMenuPage({
     return (
         <div>
             <RestaurantHeader restaurant={restaurant} />
+            <RestaurantCategories restaurant={restaurant} />
         </div>
     )
 }
