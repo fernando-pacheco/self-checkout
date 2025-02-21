@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+@theme {
+    --color-*: initial;
+
+    --color-gray: #7e8392;
+    --color-green: #5dc05b;
+    --color-limegreen: #00b969;
+    --color-red: #d52b1e;
+    --color-yellow: #ffb100;
+
+    --color-gray-200: #7e8392;
+    --color-gray-700: #323232;
+    --color-gray-900: #09090B;
+
+    /* --font-heading: var(--font-oxanium); */
+    --font-sans: var(--font-poppins);
+}
