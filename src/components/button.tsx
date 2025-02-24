@@ -1,9 +1,16 @@
-import { type VariantProps, cva } from "class-variance-authority"
+import { cva } from "class-variance-authority"
 import type { ComponentProps } from "react"
 import { twMerge } from "tailwind-merge"
 
 interface ButtonProps extends ComponentProps<"button"> {
-    variant: "default" | "secondary" | "ghost" | "disabled" | null | undefined
+    variant?:
+        | "default"
+        | "secondary"
+        | "ghost"
+        | "disabled"
+        | "red"
+        | null
+        | undefined
 }
 
 const buttonVariants = cva(
@@ -12,7 +19,8 @@ const buttonVariants = cva(
         variants: {
             variant: {
                 default: "bg-gray-100",
-                secondary: "bg-yellow text-white ",
+                secondary: "bg-yellow text-white w-full",
+                red: "bg-red text-white",
                 ghost: "",
                 disabled: "",
             },
