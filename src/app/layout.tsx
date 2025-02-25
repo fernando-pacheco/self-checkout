@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google"
 import type { ReactNode } from "react"
 
 import "./globals.css"
+import { CartProvider } from "../contexts/cart"
 
 const poppins = Poppins({
     weight: ["400", "600"],
@@ -21,7 +22,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className={`${poppins.variable}`}>
-            <body className="h-full">{children}</body>
+            <body className="h-full">
+                <CartProvider>{children}</CartProvider>
+            </body>
         </html>
     )
 }
