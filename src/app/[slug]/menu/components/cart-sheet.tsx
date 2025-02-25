@@ -8,7 +8,7 @@ import {
 import { useCart } from "@/hooks/use-cart"
 
 function CartSheet() {
-    const { isOpen, toggleCart } = useCart()
+    const { isOpen, toggleCart, cartProducts } = useCart()
 
     return (
         <Sheet open={isOpen} onOpenChange={toggleCart}>
@@ -21,6 +21,13 @@ function CartSheet() {
                         servers.
                     </SheetDescription>
                 </SheetHeader>
+                {cartProducts.map((product) => (
+                    <div key={product.name}>
+                        <h1>{product.name}</h1>
+                        <h1>{product.price}</h1>
+                        <h1>{product.quantity}</h1>
+                    </div>
+                ))}
             </SheetContent>
         </Sheet>
     )

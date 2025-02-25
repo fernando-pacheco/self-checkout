@@ -23,15 +23,15 @@ interface ProductContentProps {
 }
 
 function ProductContent({ product, restaurant }: ProductContentProps) {
-    const [countQuantity, setCountQuantity] = useState<number>(1)
-    const { toggleCart, isOpen } = useCart()
+    const [quantity, setQuantity] = useState<number>(1)
+    const { toggleCart, addProduct } = useCart()
 
     function handleIncreaseQuantity() {
-        setCountQuantity((prev) => prev + 1)
+        setQuantity((prev) => prev + 1)
     }
 
     function handleDecreaseQuantity() {
-        setCountQuantity((prev) => {
+        setQuantity((prev) => {
             if (prev === 1) {
                 return 1
             }
@@ -41,6 +41,10 @@ function ProductContent({ product, restaurant }: ProductContentProps) {
     }
 
     function handleAddToCart() {
+        addProduct({
+            ...product,
+            quantity,
+        })
         toggleCart()
     }
 
@@ -74,7 +78,7 @@ function ProductContent({ product, restaurant }: ProductContentProps) {
                                 <ChevronLeft />
                             </Button>
                             <p className="flex justify-center w-4">
-                                {countQuantity}
+                                {quantity}
                             </p>
                             <Button
                                 variant={"red"}
