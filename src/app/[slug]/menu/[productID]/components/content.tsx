@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@/components/button"
+import { ScrollArea } from "@/components/scroll-area"
 import { formatCurrency } from "@/utils/format-currency"
 import type { Product, Restaurant } from "@prisma/client"
 import { ChefHat, ChevronLeft, ChevronRight, Circle } from "lucide-react"
@@ -30,8 +31,8 @@ function ProductContent({ product, restaurant }: ProductContentProps) {
     }
 
     return (
-        <div className="p-5 flex flex-auto flex-col">
-            <div className="flex-auto space-y-5">
+        <div className="p-5 pb-2 flex flex-auto flex-col overflow-hidden">
+            <div className="flex-auto space-y-5 overflow-hidden">
                 <div className="space-y-2">
                     <div className="flex gap-2 items-center">
                         <Image
@@ -68,32 +69,30 @@ function ProductContent({ product, restaurant }: ProductContentProps) {
                         </Button>
                     </div>
                 </div>
-                <div className="space-y-1">
-                    <h1 className="font-semibold">Sobre</h1>
-                    <p className="text-sm text-gray-200 text-justify">
-                        {product.description}
-                    </p>
-                </div>
-                <div className="space-y-1">
-                    <div className="flex gap-1 items-center">
-                        <ChefHat className="size-4" />
-                        <h1 className="font-semibold">Ingredientes</h1>
-                    </div>
-                    <div className="px-1.5 text-gray-200">
-                        {product.ingredients.map((ingredient) => (
-                            <div
-                                key={ingredient}
-                                className="flex items-center gap-2"
-                            >
-                                <Circle className="size-1 fill-gray-200" />
-                                <p className="text-sm">{ingredient}</p>
+                <ScrollArea className="h-full">
+                    <div className="space-y-5 mb-36">
+                        <div className="space-y-1">
+                            <h1 className="font-semibold">Sobre</h1>
+                            <p className="text-sm text-gray-200 text-justify">
+                                {product.description}
+                            </p>
+                        </div>
+                        <div className="space-y-1">
+                            <div className="flex gap-1 items-center">
+                                <ChefHat className="size-4" />
+                                <h1 className="font-semibold">Ingredientes</h1>
                             </div>
-                        ))}
+                            <ul className="px-1.5 text-gray-200 list-disc list-inside text-sm">
+                                {product.ingredients.map((ingredient) => (
+                                    <li key={ingredient}>{ingredient}</li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                </ScrollArea>
             </div>
-            <div className="w-full mt-5">
-                <Button className="rounded-full " variant={"secondary"}>
+            <div className="w-full mt-2">
+                <Button className="rounded-full" variant={"secondary"}>
                     Adicionar à sacola
                 </Button>
             </div>
