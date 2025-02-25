@@ -34,7 +34,24 @@ function CartProvider({ children }: CartProviderProps) {
     }
 
     function addProduct(product: CartProduct) {
-        setCartProducts((prev) => [...prev, product])
+        const productAlreadyExists = cartProducts.some(
+            (prev) => prev.id === product.id
+        )
+
+        if (productAlreadyExists) {
+            setCartProducts((prev) =>
+                prev.map((cartProduct) =>
+                    cartProduct.id === product.id
+                        ? {
+                              ...cartProduct,
+                              quantity: cartProduct.quantity + product.quantity,
+                          }
+                        : cartProduct
+                )
+            )
+        } else {
+            setCartProducts((prev) => [...prev, { ...product }])
+        }
     }
 
     return (
