@@ -1,3 +1,5 @@
+"use client"
+
 import type { Restaurant } from "@prisma/client"
 import { Clock, Star } from "lucide-react"
 import Image from "next/image"
