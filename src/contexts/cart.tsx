@@ -12,6 +12,9 @@ interface CartContextProps {
     cartProducts: CartProduct[]
     toggleCart: VoidFunction
     addProduct: (product: CartProduct) => void
+    decreaseProductQuantity: (productID: string) => void
+    removeProduct: (productID: string) => void
+    increaseProductQuantity: (productID: string) => void
 }
 
 interface CartProviderProps {
@@ -23,6 +26,9 @@ const CartContext = createContext<CartContextProps>({
     cartProducts: [],
     toggleCart: () => {},
     addProduct: (product: CartProduct) => {},
+    decreaseProductQuantity: (productID: string) => {},
+    removeProduct: (productID: string) => {},
+    increaseProductQuantity: (productID: string) => {},
 })
 
 function CartProvider({ children }: CartProviderProps) {
@@ -54,6 +60,32 @@ function CartProvider({ children }: CartProviderProps) {
         }
     }
 
+    function decreaseProductQuantity(productID: string) {
+        setCartProducts((prev) =>
+            prev.map((cartProduct) =>
+                cartProduct.id === productID && cartProduct.quantity > 1
+                    ? { ...cartProduct, quantity: cartProduct.quantity - 1 }
+                    : cartProduct
+            )
+        )
+    }
+
+    function increaseProductQuantity(productID: string) {
+        setCartProducts((prev) =>
+            prev.map((cartProduct) =>
+                cartProduct.id === productID && cartProduct.quantity > 1
+                    ? { ...cartProduct, quantity: cartProduct.quantity + 1 }
+                    : cartProduct
+            )
+        )
+    }
+
+    function removeProduct(productID: string) {
+        setCartProducts((prev) =>
+            prev.filter((prevProduct) => prevProduct.id !== productID)
+        )
+    }
+
     return (
         <CartContext.Provider
             value={{
@@ -61,6 +93,9 @@ function CartProvider({ children }: CartProviderProps) {
                 cartProducts,
                 toggleCart,
                 addProduct,
+                decreaseProductQuantity,
+                removeProduct,
+                increaseProductQuantity,
             }}
         >
             {children}
