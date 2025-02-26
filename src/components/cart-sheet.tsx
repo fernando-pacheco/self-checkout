@@ -15,7 +15,7 @@ function CartSheet() {
         <Sheet open={isOpen} onOpenChange={toggleCart}>
             <SheetContent className="w-[85%] sm:w-[600px] p-4">
                 <SheetTitle>Carrinho</SheetTitle>
-                <div className="py-5">
+                <div className="py-5 space-y-4">
                     {cartProducts.map((product) => (
                         <CartProductItem key={product.id} product={product} />
                     ))}
