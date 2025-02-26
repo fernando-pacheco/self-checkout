@@ -68,4 +68,4 @@ function CartProvider({ children }: CartProviderProps) {
     )
 }
 
-export { CartProvider, CartContext, type CartContextProps }
+export { type CartProduct, CartProvider, CartContext, type CartContextProps }
