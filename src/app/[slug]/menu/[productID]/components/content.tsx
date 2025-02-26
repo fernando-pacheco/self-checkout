@@ -2,20 +2,12 @@
 
 import { Button } from "@/components/button"
 import { ScrollArea } from "@/components/scroll-area"
-import {
-    Sheet,
-    SheetContent,
-    SheetDescription,
-    SheetHeader,
-    SheetTitle,
-} from "@/components/sheet"
 import { useCart } from "@/hooks/use-cart"
 import { formatCurrency } from "@/utils/format-currency"
 import type { Product, Restaurant } from "@prisma/client"
 import { ChefHat, ChevronLeft, ChevronRight, Circle } from "lucide-react"
 import Image from "next/image"
 import { useState } from "react"
-import { CartSheet } from "../../components/cart-sheet"
 
 interface ProductContentProps {
     product: Product
@@ -122,7 +114,6 @@ function ProductContent({ product, restaurant }: ProductContentProps) {
                     </Button>
                 </div>
             </div>
-            <CartSheet />
         </>
     )
 }
