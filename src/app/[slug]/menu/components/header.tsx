@@ -1,6 +1,8 @@
 "use client"
 
 import { Button } from "@/components/button"
+import { HeaderNavigation } from "@/components/header-navigation"
+import { useCart } from "@/hooks/use-cart"
 import type { Restaurant } from "@prisma/client"
 import { ChevronLeft, ScrollText } from "lucide-react"
 import Image from "next/image"
@@ -16,15 +18,7 @@ function RestaurantHeader({ restaurant }: RestaurantHeaderProps) {
 
     return (
         <div className="relative h-[250px] w-full">
-            <Button
-                onClick={handleBackClick}
-                className="absolute top-4 left-4 z-50"
-            >
-                <ChevronLeft className="size-5" />
-            </Button>
-            <Button className="absolute top-4 right-4 z-50">
-                <ScrollText className="size-5" />
-            </Button>
+            <HeaderNavigation navigation={handleBackClick} />
             <Image
                 src={restaurant.coverImage}
                 alt={restaurant.name}
