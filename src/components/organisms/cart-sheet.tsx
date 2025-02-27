@@ -1,7 +1,7 @@
 import { Sheet, SheetContent, SheetTitle } from "@/components/atoms/sheet"
 import { useCart } from "@/hooks/use-cart"
 import { formatCurrency } from "@/utils/format-currency"
-import { Button } from "../atoms/button"
+import { FinishOrderButton } from "../molecules/finish-order-button"
 import { CartProductItem } from "./cart-product-item"
 
 function CartSheet() {
@@ -21,7 +21,7 @@ function CartSheet() {
                         ))}
                     </div>
                 </div>
-                <div className="space-y-2 border p-4">
+                <div className="space-y-2 border p-4 rounded-lg">
                     <div className="flex justify-between border-b border-b-gray-100 pb-0.5">
                         <p className="text-sm font-semibold">Subtotal</p>
                         <p className="text-sm">{formatCurrency(total)}</p>
@@ -35,7 +35,7 @@ function CartSheet() {
                         <p className="text-sm">{formatCurrency(total - 0)}</p>
                     </div>
                 </div>
-                <Button variant={"secondary"}>Finalizar Pedido</Button>
+                <FinishOrderButton />
             </SheetContent>
         </Sheet>
     )
