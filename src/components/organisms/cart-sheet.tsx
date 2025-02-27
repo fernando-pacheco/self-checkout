@@ -12,7 +12,7 @@ function CartSheet() {
             <SheetContent className="w-[85%] sm:w-[600px] p-4">
                 <SheetTitle>Carrinho</SheetTitle>
                 <div className="py-5 flex flex-col h-full">
-                    <div className="flex-auto">
+                    <div className="flex-auto space-y-4">
                         {cartProducts.map((product) => (
                             <CartProductItem
                                 key={product.id}
