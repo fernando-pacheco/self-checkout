@@ -1,10 +1,7 @@
 "use client"
 
-import { Button } from "@/components/button"
-import { HeaderNavigation } from "@/components/header-navigation"
-import { useCart } from "@/hooks/use-cart"
+import { HeaderNavigation } from "@/components/molecules/header-navigation"
 import type { Restaurant } from "@prisma/client"
-import { ChevronLeft, ScrollText } from "lucide-react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 

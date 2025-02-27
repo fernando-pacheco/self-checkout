@@ -1,9 +1,9 @@
 "use client"
 
-import { CartSheet } from "@/components/cart-sheet"
+import { CartSheet } from "@/components/organisms/cart-sheet"
 import { useCart } from "@/hooks/use-cart"
 import { ChevronLeft, ScrollText } from "lucide-react"
-import { Button } from "./button"
+import { Button } from "../atoms/button"
 
 interface HeaderNavigationProps {
     navigation: VoidFunction

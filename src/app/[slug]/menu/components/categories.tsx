@@ -1,7 +1,7 @@
 "use client"
 
-import { Button } from "@/components/button"
-import { ScrollArea, ScrollBar } from "@/components/scroll-area"
+import { Button } from "@/components/atoms/button"
+import { ScrollArea, ScrollBar } from "@/components/atoms/scroll-area"
 import type { Prisma } from "@prisma/client"
 import { useState } from "react"
 import { RestaurantProducts } from "./products"

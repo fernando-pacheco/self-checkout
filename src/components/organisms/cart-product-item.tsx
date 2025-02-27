@@ -5,7 +5,7 @@ import { useCart } from "@/hooks/use-cart"
 import { formatCurrency } from "@/utils/format-currency"
 import { ChevronLeft, ChevronRight, Trash } from "lucide-react"
 import Image from "next/image"
-import { Button } from "./button"
+import { Button } from "../atoms/button"
 
 interface CartProductItemProps {
     product: CartProduct

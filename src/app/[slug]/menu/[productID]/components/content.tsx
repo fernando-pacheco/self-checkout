@@ -1,7 +1,7 @@
 "use client"
 
-import { Button } from "@/components/button"
-import { ScrollArea } from "@/components/scroll-area"
+import { Button } from "@/components/atoms/button"
+import { ScrollArea } from "@/components/atoms/scroll-area"
 import { useCart } from "@/hooks/use-cart"
 import { formatCurrency } from "@/utils/format-currency"
 import type { Product, Restaurant } from "@prisma/client"
