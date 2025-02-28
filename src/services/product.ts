@@ -6,4 +6,14 @@ async function getProductByID(id: string) {
     })
 }
 
-export { getProductByID }
+async function getProductsByIDList(products: Array<{ id: string }>) {
+    return await db.product.findMany({
+        where: {
+            id: {
+                in: products.map((product) => product.id),
+            },
+        },
+    })
+}
+
+export { getProductByID, getProductsByIDList }

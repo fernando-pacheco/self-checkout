@@ -79,7 +79,7 @@ function CartProvider({ children }: CartProviderProps) {
     function increaseProductQuantity(productID: string) {
         setCartProducts((prev) =>
             prev.map((cartProduct) =>
-                cartProduct.id === productID && cartProduct.quantity > 1
+                cartProduct.id === productID
                     ? { ...cartProduct, quantity: cartProduct.quantity + 1 }
                     : cartProduct
             )

@@ -1,10 +1,14 @@
 import { Sheet, SheetContent, SheetTitle } from "@/components/atoms/sheet"
 import { useCart } from "@/hooks/use-cart"
 import { formatCurrency } from "@/utils/format-currency"
-import { FinishOrderButton } from "../molecules/finish-order-button"
+import { useState } from "react"
+import { Button } from "../atoms/button"
 import { CartProductItem } from "./cart-product-item"
+import { FinishOrderDialog } from "./finish-order-dialog"
 
 function CartSheet() {
+    const [finishOrderDialogIsOpen, setFinishOrderDialogIsOpen] =
+        useState(false)
     const { isOpen, toggleCart, cartProducts, total } = useCart()
 
     return (
@@ -35,7 +39,16 @@ function CartSheet() {
                         <p className="text-sm">{formatCurrency(total - 0)}</p>
                     </div>
                 </div>
-                <FinishOrderButton />
+                <Button
+                    variant={"red"}
+                    onClick={() => setFinishOrderDialogIsOpen(true)}
+                >
+                    Finalizar pedido
+                </Button>
+                <FinishOrderDialog
+                    open={finishOrderDialogIsOpen}
+                    onOpenChange={setFinishOrderDialogIsOpen}
+                />
             </SheetContent>
         </Sheet>
     )
