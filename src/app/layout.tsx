@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google"
 import type { ReactNode } from "react"
 
 import "./globals.css"
+import { Toaster } from "@/components/atoms/sonner"
 import { CartProvider } from "../contexts/cart"
 
 const poppins = Poppins({
@@ -24,6 +25,7 @@ export default function RootLayout({
         <html lang="en" className={`${poppins.variable}`}>
             <body className="h-full">
                 <CartProvider>{children}</CartProvider>
+                <Toaster />
             </body>
         </html>
     )
