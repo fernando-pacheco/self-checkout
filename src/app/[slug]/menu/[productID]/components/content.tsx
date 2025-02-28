@@ -105,11 +105,7 @@ function ProductContent({ product, restaurant }: ProductContentProps) {
                     </ScrollArea>
                 </div>
                 <div className="w-full mt-2">
-                    <Button
-                        className="rounded-full"
-                        variant={"secondary"}
-                        onClick={handleAddToCart}
-                    >
+                    <Button variant={"secondary"} onClick={handleAddToCart}>
                         Adicionar à sacola
                     </Button>
                 </div>

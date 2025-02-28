@@ -22,7 +22,8 @@ const buttonVariants = cva(
                 secondary: "bg-yellow text-white w-full",
                 red: "bg-red text-white",
                 ghost: "",
-                disabled: "",
+                disabled:
+                    "bg-gray-200/30 hover:bg-gray-200/30 text-gray-700 hover:text-gray-700 cursor-default",
             },
         },
         defaultVariants: {

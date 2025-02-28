@@ -36,7 +36,7 @@ function RestaurantCategories({ restaurant }: RestaurantCategoriesProps) {
                     {restaurant.MenuCategory.map((category) => (
                         <Button
                             key={category.id}
-                            className="rounded-full py-1 text-base"
+                            className="py-1 text-base"
                             onClick={() => handleCategoryClick(category)}
                             variant={getCategoryButtonVariant(category)}
                         >
